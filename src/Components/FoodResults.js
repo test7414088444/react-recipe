@@ -3,20 +3,18 @@ import './foodresults.css';
 import RecipeDetails from './RecipeDetails';
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+
 function FoodResults() {
-const foodData = useSelector(state => state.food)
-const history = useHistory();
+    const foodData = useSelector(state => state.food)
+    const history = useHistory();
 
     const [recipe, setRecipe] = useState(null)
-        console.log(history)
 
     useEffect(() => {
-        console.log('food result', foodData)
         setRecipe(foodData);
     },[foodData])
     
     const ShowDetails = recipe => {
-        // console.log(history)
         history.push({
             pathname: '/details',
             state: recipe

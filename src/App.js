@@ -13,8 +13,6 @@ function App() {
 
   var store = createStore(foodReducer);
   store.subscribe(() => console.log('store', store.getState()));
-// console.log('store', store.dispatch)
-  // store.dispatch({payload: [1,2,3,4,5], type: 'ALL'})
   return (
   <Provider store={store}>
   <div className="App">

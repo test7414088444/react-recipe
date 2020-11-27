@@ -14,13 +14,11 @@ function RecipeDetails(props) {
     const MouseOverTip = (e) => {
         if(e.target.children[0]) {            
             e.target.children[0].classList.add('toggleDisplay');
-            // e.target.children[0].classList.add('popup');
         }
     }
     const MouseOutTip = (e) => {
         if(e.target.children[0]) {
             e.target.children[0].classList.remove('toggleDisplay');
-            // e.target.children[0].classList.remove('popup');
         }
     }
 
