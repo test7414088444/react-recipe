@@ -8,15 +8,12 @@ function Food() {
     const dispatch = useDispatch();
 
     const SearchRecipe = (e) => {
-        // console.log(e.keyCode)
         if(e.keyCode === 13 && e.target.value.trim().length > 0) {
-            // console.log(e.target.value.trim().length)
             var search = e.target.value.trim();
             var from = Math.round(Math.random()*100);
             fetch(`https://api.edamam.com/search?q=${search}&app_id=${process.env.REACT_APP_RECIPE_APP_ID}&app_key=${process.env.REACT_APP_RECIPE_API_KEY}&from=${from}&to=${from+12}`)
             .then(res => res.json())
             .then(data => {
-                // console.log(data)
                 dispatch({type: 'ALL', payload: data})
             })
             .catch(err => alert(err.message))
@@ -28,7 +25,6 @@ function Food() {
         <div className='food_search_box'>
             <h3 className='search_heading'>FIND A RECIPE</h3>
             <input className='food_search_input' type='text' placeholder='Search Recipe' onKeyUp={(e) => SearchRecipe(e)} />
-            {/* <button onClick={() => console.log('recipe', recipe)}>click</button> */}
         </div>
     </div>
     )
