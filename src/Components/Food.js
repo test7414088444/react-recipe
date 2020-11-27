@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './food.css';
 import { useDispatch } from 'react-redux'
 
@@ -12,7 +13,7 @@ function Food() {
             // console.log(e.target.value.trim().length)
             var search = e.target.value.trim();
             var from = Math.round(Math.random()*100);
-            fetch(`https://api.edamam.com/search?q=${search}&app_id=9613676b&app_key=c38e5b2c60fe20bf86a3eefe095b17da&from=${from}&to=${from+12}`)
+            fetch(`https://api.edamam.com/search?q=${search}&app_id=${process.env.REACT_APP_RECIPE_APP_ID}&app_key=${process.env.REACT_APP_RECIPE_API_KEY}&from=${from}&to=${from+12}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
