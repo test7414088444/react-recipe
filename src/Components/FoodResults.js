@@ -1,6 +1,5 @@
 import React,{ useState, useEffect } from 'react';
 import './foodresults.css';
-import RecipeDetails from './RecipeDetails';
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 

@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import './recipeDetails.css'
 import backArrow from '../icons/backArrow.png';
@@ -7,10 +7,14 @@ function RecipeDetails(props) {
 
     const location = useLocation();
     const history = useHistory();
-    const [recipe, setRecipe] = useState(location.state || null)
-    if(!recipe) {
-        history.replace('/')
-    }
+    const [recipe, setRecipe] = useState(null)
+    useEffect(() => {
+        setRecipe(location.state);
+        if(!location.state) {
+            history.replace('/')
+        }
+    }, [location.state, history])
+    
     const MouseOverTip = (e) => {
         if(e.target.children[0]) {            
             e.target.children[0].classList.add('toggleDisplay');
@@ -34,7 +38,7 @@ function RecipeDetails(props) {
     return (recipe ? 
         <div className='recipeDetails'>
         <div className='recipeDetails_header'>
-            <img onClick={() => history.goBack()} src={backArrow} width='30' />
+            <img onClick={() => history.goBack()} src={backArrow} width='30' alt='' />
             <h2>{recipe.label}</h2>
         </div>
         <div className='recipeDetails_container'>
